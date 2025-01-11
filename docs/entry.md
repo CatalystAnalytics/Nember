@@ -6,6 +6,8 @@
 
 To enter data into the machine learning process for your models, you can access the route via the `/entry/enter-data`. The data must be in a structured format which can be found below. The API key must also be included in the header. Entering data does not incur any usage charges. Once the data is pushed, any previous data will be overwritten. We do not store multiple different sessions of data. There is a 6-hour timer on the data, meaning after 6 hours, the data will be cleared.
 
+All source code can be found [here.]()
+
 ---
 
 ### **Request**
@@ -80,7 +82,7 @@ To enter data into the machine learning process for your models, you can access 
             "Open": true,
             "EnterValue": 1.25,
             "ExitValue": 1.35,
-            "EnterTime": 1629187200,
+            "EntryTime": 1629187200,
             "ExitTime": 1629190800,
             "Target": 1.40,
             "StopLoss": 1.20,
@@ -96,11 +98,11 @@ To enter data into the machine learning process for your models, you can access 
             "Open": true,
             "EnterValue": 1.25,
             "ExitValue": 1.35,
-            "EnterTime": 1629187200,
+            "EntryTime": 1629187200,
             "ExitTime": 1629190800,
             "Target": 1.40,
             "StopLoss": 1.20,
-            "Outcome": 1,
+            "Outcome": 0,
             "Position": "Long",
             "DataPoints": [
                 {"point1": 1.0, "point2": 2.5}, 
@@ -118,21 +120,23 @@ To enter data into the machine learning process for your models, you can access 
 
 ### **Code Sample**
 
+All source code can be found [here.]()
+
 === "Python"
 
     ``` Python
     import requests
 
     url = "https://api.nember.catalystanalytics.io/entry/enter-data"
-    headers = {"api_key": "your_api_key"}
+    headers = {"api_key": "you-api-key"}
     data = {
         "data": [
             {
                 "StratName": "example_strategy",
-                "Open": true,
+                "Open": True,
                 "EnterValue": 1.25,
                 "ExitValue": 1.35,
-                "EnterTime": 1629187200,
+                "EntryTime": 1629187200,
                 "ExitTime": 1629190800,
                 "Target": 1.40,
                 "StopLoss": 1.20,
@@ -145,14 +149,14 @@ To enter data into the machine learning process for your models, you can access 
             },
             {
                 "StratName": "example_strategy",
-                "Open": true,
+                "Open": True,
                 "EnterValue": 1.25,
                 "ExitValue": 1.35,
-                "EnterTime": 1629187200,
+                "EntryTime": 1629187200,
                 "ExitTime": 1629190800,
                 "Target": 1.40,
                 "StopLoss": 1.20,
-                "Outcome": 1,
+                "Outcome": 0,
                 "Position": "Long",
                 "DataPoints": [
                     {"point1": 1.0, "point2": 2.5}, 
@@ -185,7 +189,7 @@ To enter data into the machine learning process for your models, you can access 
                         \"Open\": true,
                         \"EnterValue\": 1.25,
                         \"ExitValue\": 1.35,
-                        \"EnterTime\": 1629187200,
+                        \"EntryTime\": 1629187200,
                         \"ExitTime\": 1629190800,
                         \"Target\": 1.40,
                         \"StopLoss\": 1.20,
@@ -213,7 +217,7 @@ To enter data into the machine learning process for your models, you can access 
 === "cURL"
 
     ``` curl
-    curl -X POST "https://yourapi.com/api/entry/enter-data" \
+    curl -X POST "https://api.nember.catalystanalytics.io/entry/enter-data" \
     -H "Content-Type: application/json" \
     -H "api_key: your_api_key" \
     -d '{
@@ -223,7 +227,7 @@ To enter data into the machine learning process for your models, you can access 
         "Open": true,
         "EnterValue": 1.25,
         "ExitValue": 1.35,
-        "EnterTime": 1629187200,
+        "EntryTime": 1629187200,
         "ExitTime": 1629190800,
         "Target": 1.40,
         "StopLoss": 1.20,

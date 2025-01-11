@@ -2,6 +2,8 @@
 
 The Nember websocket connection can be used to provide insanely fast predictions up to 20ms response time. We recommend using this endpoint if the trading bot/algo needs to make fast predictions in a small interval (ticks, seconds, and lower 1 - 10 minute intervals). Below is a detailed guide on how to use this endpoint properly. With one API Key, any number of connections can be made but the usage charge will occur for each connection made. You can access you connections in the web app. If for any reason something happens you can close the connection on the web app.
 
+All source code can be found [here.]()
+
 ## **/ws** - <mark>Websocket</mark>
 
 **`wss://api.nember.catalystanalytics.io/ws`**
@@ -84,7 +86,7 @@ After your key is authenticated you can make predictions with your models you tr
 #### **Request Example**
 ``` json
 {
-    "api_key": "your_api_key",
+    "api_key": "YOUR-API-KEY",
     "strat_name": "example_strategy",
     "model_name": "DecisionTree",
     "model_type": "class",
@@ -134,38 +136,42 @@ After your key is authenticated you can make predictions with your models you tr
     ``` Python
     import asyncio
     import websockets
+    import json
 
     async def connect():
         uri = "wss://api.nember.catalystanalytics.io/ws"
         connected = False
         async with websockets.connect(uri) as websocket:
-            if not connected:
-                await websocket.send("your_api_key")
-            elif:
-                data = {
-                    "api_key": "your_api_key",
-                    "strat_name": "example_strategy",
-                    "model_name": "DecisionTree",
-                    "model_type": "class",
-                    "DataPoints": [
-                        { "point1": 3, "point2": 2 },
-                        { "point1": 1, "point2": 3 }
-                    ]
-                }
-                await websocket.send(json.dumps(data))
+            while True:
+                if not connected:
+                    await websocket.send("YOUR-API-KEY")
+                else:
+                    data = {
+                        "api_key": "YOUR-API-KEY",
+                        "strat_name": "example_strategy",
+                        "model_name": "DecisionTree",
+                        "model_type": "class",
+                        "DataPoints": [
+                            { "point1": 3, "point2": 2 },
+                            { "point1": 1, "point2": 3 }
+                        ]
+                    }
+                    await websocket.send(json.dumps(data))
 
-            response = await websocket.recv()
-            response_data = json.loads(response)
+                response = await websocket.recv()
+                response_data = json.loads(response)
 
-            if "message" in response_data and response_data["message"] == "valid" and not connected:
-                connected = True
-            elif connected:
-                if response_data["type"] == "success":
-                    print(response_data["prediction"])
-                elif response_data["type"] == "error":
-                    print(response_data["message"])
-            else: 
-                print("API key verification failed.")
+                if "message" in response_data and response_data["message"] == "valid" and not connected:
+                    connected = True
+                elif connected:
+                    if response_data["type"] == "success":
+                        print(response_data["prediction"])
+                    elif response_data["type"] == "error":
+                        print(response_data["message"])
+                else: 
+                    print("API key verification failed.")
+                    
+                await asyncio.sleep(1)
 
     # Run the event loop
     asyncio.get_event_loop().run_until_complete(connect())
