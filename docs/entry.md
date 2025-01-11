@@ -6,7 +6,7 @@
 
 To enter data into the machine learning process for your models, you can access the route via the `/entry/enter-data`. The data must be in a structured format which can be found below. The API key must also be included in the header. Entering data does not incur any usage charges. Once the data is pushed, any previous data will be overwritten. We do not store multiple different sessions of data. There is a 6-hour timer on the data, meaning after 6 hours, the data will be cleared.
 
-All source code can be found [here.]()
+All source code can be found [here.](https://github.com/CatalystAnalytics/Nember/tree/main/source)
 
 ---
 
@@ -120,7 +120,7 @@ All source code can be found [here.]()
 
 ### **Code Sample**
 
-All source code can be found [here.]()
+All source code can be found [here.](https://github.com/CatalystAnalytics/Nember/tree/main/source)
 
 === "Python"
 

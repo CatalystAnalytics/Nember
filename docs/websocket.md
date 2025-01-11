@@ -2,7 +2,7 @@
 
 The Nember websocket connection can be used to provide insanely fast predictions up to 20ms response time. We recommend using this endpoint if the trading bot/algo needs to make fast predictions in a small interval (ticks, seconds, and lower 1 - 10 minute intervals). Below is a detailed guide on how to use this endpoint properly. With one API Key, any number of connections can be made but the usage charge will occur for each connection made. You can access you connections in the web app. If for any reason something happens you can close the connection on the web app.
 
-All source code can be found [here.]()
+All source code can be found [here.](https://github.com/CatalystAnalytics/Nember/tree/main/source)
 
 ## **/ws** - <mark>Websocket</mark>
 
